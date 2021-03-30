@@ -1,11 +1,6 @@
-## My Project
+## Ethereum on Amazon Managed Blockchain Developer Guide
 
-TODO: Fill this README out!
-
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
+The open source version of the Ethereum on Amazon Managed Blockchain Developer Guide. To submit feedback or request changes, submit an issue or make changes and submit a pull request.
 
 ## Security
 
