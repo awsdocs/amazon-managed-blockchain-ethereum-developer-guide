@@ -8,6 +8,7 @@ AWS Identity and Access Management \(IAM\) is an AWS service that helps an admin
 + [Managing access using policies](#security_iam_access-manage)
 + [How Ethereum on Amazon Managed Blockchain works with IAM](security_iam_service-with-iam.md)
 + [Ethereum on Amazon Managed Blockchain identity\-based policy examples](security_iam_id-based-policy-examples.md)
++ [Using Service\-Linked Roles for Managed Blockchain](using-service-linked-roles.md)
 + [Troubleshooting Ethereum on Amazon Managed Blockchain identity and access](security_iam_troubleshoot.md)
 
 ## Audience<a name="security_iam_audience"></a>

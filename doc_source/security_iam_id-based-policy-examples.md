@@ -9,6 +9,7 @@ To learn how to create an IAM identity\-based policy using these example JSON po
 + [Allow users to view their own permissions](#security_iam_id-based-policy-examples-view-own-permissions)
 + [Using the Ethereum on Managed Blockchain Console](#security_iam_id-based-policy-examples-console)
 + [Performing all available actions for Ethereum on Managed Blockchain](#security_iam_id-based-policy-example)
++ [Controlling access using tags](#security_iam_id-based-policy-examples-tags)
 
 ## Policy best practices<a name="security_iam_service-with-iam-policy-best-practices"></a>
 
@@ -113,6 +114,163 @@ This example grants an IAM user in your AWS account access to list all Ethereum 
             "Resource": [
                 "arn:aws:managedblockchain:*:111122223333:nodes/*"
             ]
+        }
+    ]
+}
+```
+
+## Controlling access using tags<a name="security_iam_id-based-policy-examples-tags"></a>
+
+The following example policies demonstrate how you can use tags to limit access to Ethereum on Managed Blockchain resources and actions performed on those resources\.
+
+**Note**  
+This topic includes examples of policy statements with a `Deny` effect\. These policies assume that other policies with `Allow` effect for those actions exist with broader applicability\. The `Deny` policy statement is being used to restrict that otherwise overly\-permissive allow statement\.
+
+**Example – Deny access to networks with a specific tag key**  
+The following identity\-based policy statement denies the IAM principal the ability to retrieve or view network information if the network has a tag with the tag key of `restricted`\.  
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DenyTaggedNetworkAccess",
+            "Effect": "Deny",
+            "Action": [
+                "managedblockchain:GetNetwork"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "aws:ResourceTag/restricted": [
+                        "*"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
+**Example – Deny node creation on networks that have a specific tag and value**  
+The following identity\-based policy statement denies the IAM principal the ability to create a node on an Ethereum public network tagged in the AWS account with the tag key of `department` and the value `accounting`\.  
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DenyCreateNodeForNetworkWithTag",
+            "Effect": "Deny",
+            "Action": [
+                "managedblockchain:CreateNode"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceTag/department": [
+                        "accounting"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
+**Example – Require a specific tag key and value to be added when a node is created**  
+The following identity\-based policy statements allow an IAM principal to create a node for the AWS account 111122223333 only if a key with the tag key of `department` and a value of `accounting` is added during creation\.  
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "RequireTagForCreateNode",
+            "Effect": "Allow",
+            "Action": [
+                "managedblockchain:CreateNode"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestTag/department": [
+                        "accounting"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "AllowTaggingNodes",
+            "Effect": "Allow",
+            "Action": [
+                "managedblockchain:TagResource"
+            ],
+            "Resource": [
+                "arn:aws:managedblockchain:us-east-1:111122223333:nodes/*"
+            ]
+        }
+    ]
+}
+```
+
+**Example – Deny listing nodes for networks that have a specific tag key and value**  
+The following identity\-based policy statement denies the IAM principal the ability to list nodes on an Ethereum public network tagged in the AWS account with the tag key of `department` and the value `accounting`\.  
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DenyListNodesForNetworkWithTag",
+            "Effect": "Deny",
+            "Action": [
+                "managedblockchain:ListNodes"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceTag/department": [
+                        "accounting"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
+**Example – Deny retrieving and viewing node information for nodes with a specific tag key and value**  
+The following identity\-based policy statement denies the IAM principal the ability to view node information for nodes that have a tag with the tag key of `department` and the value `accounting`\.  
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "DenyGetNodeWithNodeTag",
+            "Effect": "Deny",
+            "Action": [
+                "managedblockchain:GetNode"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Condition": {
+                "StringEquals": {
+                    "aws:ResourceTag/department": [
+                        "accounting"
+                    ]
+                }
+            }
         }
     ]
 }

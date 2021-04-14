@@ -23,7 +23,7 @@ WebSockets calls have a 512 KB payload limit\. Some calls may exceed this limit 
 | eth\_chainId | Returns an integer value for the currently configured Chain Id value introduced in [EIP\-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md)\. Returns None if no Chain Id is available\. |  | 
 | [eth\_estimateGas](https://eth.wiki/json-rpc/API#eth_estimategas) | Estimates and returns the gas required for a transaction without adding the transaction to the blockchain\. |  | 
 | [eth\_gasPrice](https://eth.wiki/json-rpc/API#eth_gasprice) | Returns the current price per gas in Wei\. |  | 
-| [eth\_getBalance](https://eth.wiki/json-rpc/API#eth_getbalance) | Returns the balance of an account for the specified account address and integer position of storage\. |  | 
+| [eth\_getBalance](https://eth.wiki/json-rpc/API#eth_getbalance) | Returns the balance of an account for the specified account address and either an integer position of storage, or the string "latest" \(the latest mined block\), "earliest" \(the genesis block\), or "pending" \(pending state transactions\)\. |  | 
 | [eth\_getBlockByHash](https://eth.wiki/json-rpc/API#eth_getblockbyhash) | Returns information about the block specified using the block hash\. |  | 
 | [eth\_getBlockByNumber](https://eth.wiki/json-rpc/API#eth_getblockbynumber) | Returns information about the block specified using the block number\. |  | 
 | [eth\_getBlockTransactionCountByHash](https://eth.wiki/json-rpc/API#eth_getblocktransactioncountbyhash) | Returns the number of transactions in the block specified using the block hash\. |  | 
@@ -52,7 +52,7 @@ WebSockets calls have a 512 KB payload limit\. Some calls may exceed this limit 
 | [eth\_subscribe](https://geth.ethereum.org/docs/rpc/pubsub) | Experimental for publication subscription – Creates a subscription for specified events and returns a subscription ID\.  | Available only when using WebSockets\. Subscriptions are coupled to each connection\. When the connection closes, the subscription is removed\. | 
 | [eth\_syncing](https://eth.wiki/json-rpc/API#eth_syncing) | Returns an object with sync status data or false when not syncing\. |  | 
 | [eth\_uninstallFilter](https://eth.wiki/json-rpc/API#eth_uninstallfilter) | Uninstalls the filter with the specified filter ID\. |  | 
-| [eth\_unsubscribe](https://github.com/ethereum/go-ethereum/wiki/RPC-PUB-SUB#cancel-subscription) | Experimental for publication subscription – Cancels the subscription with the specified subscription ID\. |  | 
+| [eth\_unsubscribe](https://geth.ethereum.org/docs/rpc/pubsub#cancel-subscription) | Experimental for publication subscription – Cancels the subscription with the specified subscription ID\. |  | 
 | [net\_listening](https://eth.wiki/json-rpc/API#net_listening) | Returns true if the client is actively listening for network connections\. |  | 
 | [net\_peerCount](https://eth.wiki/json-rpc/API#net_peercount) | Returns the number of peers currently connected to the client\. |  | 
 | [net\_version](https://eth.wiki/json-rpc/API#net_version) | Returns the current network ID\. |  | 
@@ -92,7 +92,7 @@ For example, `wss://nd-6eaj5va43jggnpxouzp7y47e4y.wss.ethereum.managedblockchain
 **HTTP endpoint format**
 
 ```
-http://my-node-id-lowercase.ethereum.managedblockchain.us-east-1.amazonaws.com/
+https://my-node-id-lowercase.ethereum.managedblockchain.us-east-1.amazonaws.com/
 ```
 
 For example, `https://nd-6eaj5va43jggnpxouzp7y47e4y.ethereum.managedblockchain.us-east-1.amazonaws.com/`
@@ -111,7 +111,7 @@ Running the example scripts requires the following prerequisites\. Prerequisites
 
 1. Type `node --version` and verify that you are using Node version 14 or later\. If necessary, you can use the `nvm install 14` command followed by the `nvm use 14` command to install version 14\.
 
-1. Use node package manager \(npm\) to install the `aws-sdk`, `web3`, and `xhr2` packages as shown in the following examples\.\.
+1. Use node package manager \(npm\) to install the `aws-sdk`, `web3`, and `xhr2` packages as shown in the following examples\.
 
    ```
    npm install aws-sdk

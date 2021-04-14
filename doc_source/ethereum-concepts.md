@@ -20,6 +20,9 @@ When using Ethereum on Managed Blockchain to host a node on an Ethereum network,
   + **Mainnet** – This is the primary public Ethereum production blockchain proof\-of\-work network\. Transactions on mainnet have actual value \(they have real costs\) and occur on the distributed ledger\.
   + **Rinkeby** – This is a public proof\-of\-authority testnet for Go Ethereum \(Geth\) clients\. Ether on this network has no real monetary value\.
   + **Ropsten** – This is a public proof\-of\-work testnet, so operations on this network closely resemble those on mainnet\. Ether on this network has no real monetary value\.
++ **Mining not supported**
+
+  Ethereum nodes created using Managed Blockchain do not support mining\.
 + **Different endpoints for WebSockets and HTTP**
 
   Ethereum on Managed Blockchain supports the Ethereum JSON\-RPC API over HTTP and WebSockets\. Each Ethereum node in Managed Blockchain hosts different endpoints for HTTP and WebSockets\.

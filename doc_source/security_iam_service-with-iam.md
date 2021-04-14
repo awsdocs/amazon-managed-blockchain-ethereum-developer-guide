@@ -8,7 +8,7 @@ All Ethereum JSON\-RPC API calls to an Ethereum node on Managed Blockchain are a
 **Topics**
 + [Ethereum on Managed Blockchain identity\-based policies](#security_iam_service-with-iam-id-based-policies)
 + [Ethereum on Managed Blockchain Resource\-Based Policies](#security_iam_service-with-iam-resource-based-policies)
-+ [Authorization based on Ethereum on Managed Blockchain tags](#security_iam_service-with-iam-tags)
++ [Authorization based on Ethereum on Managed Blockchain tags](#security_managed-blockchain-with-iam-tags)
 
 ## Ethereum on Managed Blockchain identity\-based policies<a name="security_iam_service-with-iam-id-based-policies"></a>
 
@@ -24,7 +24,7 @@ Include actions in a policy to grant permissions to perform the associated opera
 
 Policy actions in Ethereum on Managed Blockchain use the following prefix before the action: `managedblockchain:`\. For example, to grant someone permission to create a node with the Managed Blockchain `CreateNode` API operation, you include the `managedblockchain:CreateNode` action in their policy\. Policy statements must include either an `Action` or `NotAction` element\. Ethereum on Managed Blockchain defines its own set of actions that describe tasks that you can perform with this service\.
 
-To specify multiple actions in a single statement, separate them with commas as follows:
+To specify multiple actions in a single statement, separate them with commas as follows\.
 
 ```
 "Action": [
@@ -32,7 +32,7 @@ To specify multiple actions in a single statement, separate them with commas as 
       "managedblockchain:action2"
 ```
 
-You can specify multiple actions using wildcards \(\*\)\. For example, to specify all actions that begin with the word `List`, include the following action:
+You can specify multiple actions using wildcards \(\*\)\. For example, to specify all actions that begin with the word `List`, include the following action\.
 
 ```
 "Action": "managedblockchain:List*"
@@ -58,7 +58,7 @@ Managed Blockchain resource types that can be used in IAM permissions policy sta
 
 Nodes are associated with your account\. Networks are associated with Ethereum public networks and are not associated with AWS Regions\.
 
-For example an Ethereum public network resource on Managed Blockchain has one of the following ARNs:
+For example an Ethereum public network resource on Managed Blockchain has one of the following ARNs\.
 
 ```
 arn:aws:managedblockchain:::networks/n-ethereum-mainnet
@@ -86,6 +86,8 @@ To view examples of Ethereum on Managed Blockchain identity\-based policies, see
 
 Ethereum on Managed Blockchain does not support resource\-based policies\.
 
-## Authorization based on Ethereum on Managed Blockchain tags<a name="security_iam_service-with-iam-tags"></a>
+## Authorization based on Ethereum on Managed Blockchain tags<a name="security_managed-blockchain-with-iam-tags"></a>
 
-Ethereum on Managed Blockchain does not support tagging resources or controlling access based on tags\.
+You can attach tags to Ethereum on Managed Blockchain resources or pass tags in a request to Managed Blockchain\. To control access based on tags, you provide tag information in the [condition element](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) of a policy using the `managedblockchain:ResourceTag/key-name`, `aws:RequestTag/key-name`, or `aws:TagKeys` condition keys\. For more information about tagging Ethereum on Managed Blockchain resources, see [Tagging Amazon Managed Blockchain resources](tagging.md)\.
+
+To view example identity\-based policies for allowing or denying access to resources and actions based on tags, see [Controlling access using tags](security_iam_id-based-policy-examples.md#security_iam_id-based-policy-examples-tags)\.

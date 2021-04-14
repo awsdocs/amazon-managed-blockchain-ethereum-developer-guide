@@ -25,5 +25,8 @@ Amazon's trademarks and trade dress may not be used in
       + [Identity and Access Management for Ethereum on Amazon Managed Blockchain](security-iam.md)
          + [How Ethereum on Amazon Managed Blockchain works with IAM](security_iam_service-with-iam.md)
          + [Ethereum on Amazon Managed Blockchain identity-based policy examples](security_iam_id-based-policy-examples.md)
+         + [Using Service-Linked Roles for Managed Blockchain](using-service-linked-roles.md)
          + [Troubleshooting Ethereum on Amazon Managed Blockchain identity and access](security_iam_troubleshoot.md)
++ [Tagging Amazon Managed Blockchain resources](tagging.md)
++ [Logging Amazon Managed Blockchain API calls using AWS CloudTrail](logging-using-cloudtrail.md)
 + [Document history](ethereum-developer-guide-doc-history.md)
