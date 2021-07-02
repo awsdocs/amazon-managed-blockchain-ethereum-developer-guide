@@ -10,10 +10,18 @@ All Ethereum JSON\-RPC API calls to an Ethereum node on Managed Blockchain are a
 
 ## Supported JSON\-RPC methods<a name="supported-json-rpc"></a>
 
-Ethereum on Managed Blockchain supports the following Ethereum JSON\-RPC API methods\. Methods not listed are not supported\. Each supported API call has a brief description of its utility\. Unique considerations for using the JSON\-RPC method with an Ethereum node in Managed Blockchain are indicated where applicable\.
+Ethereum on Managed Blockchain supports the following Ethereum JSON\-RPC API methods\. Methods not listed are not supported\. JSON\-RPC batch requests are also not supported\. Each supported API call has a brief description of its utility\. Unique considerations for using the JSON\-RPC method with an Ethereum node in Managed Blockchain are indicated where applicable\.
 
 **Important**  
 WebSockets calls have a 512 KB payload limit\. Some calls may exceed this limit and cause a "message response is too large" error\. Use HTTP for these requests instead of WebSockets\. HTTP requests have a 6 MB payload limit\. Responses that exceed the HTTP also result in a "message response is too large" error\.
+
+**The block identifier parameter**
+
+Some methods have an extra block identifier parameter\. The following options are possible values for this parameter:
++ A hexadecimal string value that represents an integer block number\.
++ `"earliest"` – String for the genesis block\.
++ `"latest"` – String for the latest mined block\.
++ `"pending"` – String for the pending state transactions\.
 
 
 | Method | Description | Considerations | 
@@ -23,21 +31,21 @@ WebSockets calls have a 512 KB payload limit\. Some calls may exceed this limit 
 | eth\_chainId | Returns an integer value for the currently configured Chain Id value introduced in [EIP\-155](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md)\. Returns None if no Chain Id is available\. |  | 
 | [eth\_estimateGas](https://eth.wiki/json-rpc/API#eth_estimategas) | Estimates and returns the gas required for a transaction without adding the transaction to the blockchain\. |  | 
 | [eth\_gasPrice](https://eth.wiki/json-rpc/API#eth_gasprice) | Returns the current price per gas in Wei\. |  | 
-| [eth\_getBalance](https://eth.wiki/json-rpc/API#eth_getbalance) | Returns the balance of an account for the specified account address and either an integer position of storage, or the string "latest" \(the latest mined block\), "earliest" \(the genesis block\), or "pending" \(pending state transactions\)\. |  | 
+| [eth\_getBalance](https://eth.wiki/json-rpc/API#eth_getbalance) | Returns the balance of an account for the specified account address and block identifier\. |  | 
 | [eth\_getBlockByHash](https://eth.wiki/json-rpc/API#eth_getblockbyhash) | Returns information about the block specified using the block hash\. |  | 
 | [eth\_getBlockByNumber](https://eth.wiki/json-rpc/API#eth_getblockbynumber) | Returns information about the block specified using the block number\. |  | 
 | [eth\_getBlockTransactionCountByHash](https://eth.wiki/json-rpc/API#eth_getblocktransactioncountbyhash) | Returns the number of transactions in the block specified using the block hash\. |  | 
 | [eth\_getBlockTransactionCountByNumber](https://eth.wiki/json-rpc/API#eth_getblocktransactioncountbynumber) | Returns the number of transactions in the block specified using the block number\. |  | 
-| [eth\_getCode](https://eth.wiki/json-rpc/API#eth_getcode) | Returns the code at the specified account address\. |  | 
+| [eth\_getCode](https://eth.wiki/json-rpc/API#eth_getcode) | Returns the code at the specified account address and block identifier\. |  | 
 | [eth\_getFilterChanges](https://eth.wiki/json-rpc/API#eth_getfilterchanges) | Polls the specified filter ID, retuning an array of logs that occurred since the last poll\. | Filters are ephemeral\. If Managed Blockchain needs to manage or maintain node instances for availability and performance, and an instance is replaced, filters may be deleted\. We recommend that you write your application code to handle the occasional deletion of filters\. | 
 | [eth\_getFilterLogs](https://eth.wiki/json-rpc/API#eth_getfilterlogs) | Returns an array of all logs for the specified filter ID\. | Filters are ephemeral\. If Managed Blockchain needs to manage or maintain node instances for availability and performance, and an instance is replaced, filters may be deleted\. We recommend that you write your application code to handle the occasional deletion of filters\. | 
 | [eth\_getLogs](https://eth.wiki/json-rpc/API#eth_getlogs) | Returns an array of all logs for a specified filter object\. | Filters are ephemeral\. If Managed Blockchain needs to manage or maintain node instances for availability and performance, and an instance is replaced, filters may be deleted\. We recommend that you write your application code to handle the occasional deletion of filters\. | 
 | eth\_getProof | Experimental – Returns the account and storage values of the specified account, including the Merkle proof\. |  | 
-| [eth\_getStorageAt](https://eth.wiki/json-rpc/API#eth_getstorageat) | Returns the value of the specified storage position for the specified account address\. |  | 
+| [eth\_getStorageAt](https://eth.wiki/json-rpc/API#eth_getstorageat) | Returns the value of the specified storage position for the specified account address and block identifier\. |  | 
 | [eth\_getTransactionByBlockHashAndIndex](https://eth.wiki/json-rpc/API#eth_gettransactionbyblockhashandindex) | Returns information about a transaction using the specified block hash and transaction index position\. |  | 
 | [eth\_getTransactionByBlockNumberAndIndex](https://eth.wiki/json-rpc/API#eth_gettransactionbyblocknumberandindex) | Returns information about a transaction using the specified block number and transaction index position\. |  | 
 | [eth\_getTransactionByHash](https://eth.wiki/json-rpc/API#eth_gettransactionbyhash) | Returns information about the transaction with the specified transaction hash\. |  | 
-| [eth\_getTransactionCount](https://eth.wiki/json-rpc/API#eth_gettransactioncount) | Returns the number of transactions sent from the specified address\. |  | 
+| [eth\_getTransactionCount](https://eth.wiki/json-rpc/API#eth_gettransactioncount) | Returns the number of transactions sent from the specified address and block identifier\. |  | 
 | [eth\_getTransactionReceipt](https://eth.wiki/json-rpc/API#eth_gettransactionreceipt) | Returns the receipt of the transaction using the specified transaction hash\. |  | 
 | [eth\_getUncleByBlockHashAndIndex](https://eth.wiki/json-rpc/API#eth_getunclebyblockhashandindex) | Returns information about the uncle block specified using the block hash and uncle index position\. |  | 
 | [eth\_getUncleByBlockNumberAndIndex](https://eth.wiki/json-rpc/API#eth_getunclebyblocknumberandindex) | Returns information about the uncle block specified using the block number and uncle index position\. |  | 

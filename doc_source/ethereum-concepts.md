@@ -26,6 +26,9 @@ When using Ethereum on Managed Blockchain to host a node on an Ethereum network,
 + **Different endpoints for WebSockets and HTTP**
 
   Ethereum on Managed Blockchain supports the Ethereum JSON\-RPC API over HTTP and WebSockets\. Each Ethereum node in Managed Blockchain hosts different endpoints for HTTP and WebSockets\.
++ **JSON\-RPC batch requests not supported**
+
+  Ethereum nodes created using Managed Blockchain do not support JSON\-RPC batch requests\.
 + **Payload limit for API calls**
 
   WebSockets calls have a 512 KB payload limit\. Some calls may exceed this limit and cause a "message response is too large" error\. Use HTTP for these requests instead of WebSockets\. HTTP requests have a 6 MB payload limit\. Responses that exceed the HTTP also result in a "message response is too large" error\.
