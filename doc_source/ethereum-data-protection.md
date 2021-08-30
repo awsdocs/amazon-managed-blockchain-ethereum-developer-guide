@@ -6,7 +6,7 @@ Data encryption helps prevent unauthorized users from reading data from a blockc
 
 Amazon Managed Blockchain offers fully managed encryption at rest\. Managed Blockchain encryption at rest provides enhanced security by encrypting all data at rest on Ethereum nodes using Managed Blockchain owned encryption keys in AWS Key Management Service \(AWS KMS\)\. This functionality helps reduce the operational burden and complexity involved in protecting sensitive data\. With encryption at rest, you can build security\-sensitive blockchain applications that meet strict encryption compliance and regulatory requirements\.
 
-Encryption at rest integrates with AWS KMS for managing the encryption key that is used to encrypt your tables\. A Managed Blockchain owned key is used to encrypt data at rest by default at no additional cost\. No configuration is required\. Using an AWS managed encryption key is not supported\. For more information, see [AWS owned CMKs](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk) in the *AWS Key Management Service Developer Guide*\.
+Encryption at rest integrates with AWS KMS for managing the encryption key that is used to encrypt your tables\. A Managed Blockchain owned key is used to encrypt data at rest by default at no additional cost\. No configuration is required\. Using an AWS managed encryption key is not supported\. For more information, see [AWS owned keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-owned-cmk) in the *AWS Key Management Service Developer Guide*\.
 
 ## Encryption in transit<a name="managed-blockchain-encryption-in-transit"></a>
 
